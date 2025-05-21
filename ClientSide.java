@@ -13,6 +13,8 @@ public class ClientSide {
     private DataOutputStream out = null;
     private ObjectMapper mapper = null;
     private Scanner scanner;
+    private ResponseServer response = null;
+    private RequestUser requestUser = null;
     
     public ClientSide(String address, int port){
         try {
@@ -47,7 +49,9 @@ public class ClientSide {
                 out.writeUTF(json);
                 out.flush();
                 System.out.println(in.readUTF());
-                break;
+
+                
+                if(response == null) break;
             }
 
             in.close();
